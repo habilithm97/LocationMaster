@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--
     <Button
         android:id="@+id/btn"
         android:layout_width="match_parent"
@@ -14,6 +15,13 @@
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200" />
+        android:background="@color/purple_200" /> -->
 
+    <TextView
+        android:id="@+id/tv"
+        android:text="아직 수신되지 않음"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
