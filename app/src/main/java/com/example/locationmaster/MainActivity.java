@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -33,6 +34,15 @@ import java.util.zip.DeflaterOutputStream;
 -2. 위치 리스너 구현 : 리스너를 구현하여 위치 관리자에게 전달 받은 현재 위치 정보를 처리함
 -3. 위치 정보 업데이트 요청 : 위치 정보가 변경될 때마다 requestLocationUpdates()로 위치 관리자에게 알려달라고 요청함(이 메소드의 파라미터로는 위치 리스너 객체를 전달)
 -4. 매니페스트에 권한 추가 : GPS를 사용할 수 있도록 매니페스트 파일에 ACCESS_FINE_LOCATION 권한을 추가하고 위험권한을 위한 설정과 코드를 추가함
+
+*구글 지도
+-안드로이드에서는 구글 지도 라이브러리를 제공함
+-com.google.android.maps 패키지가 포함되어 있고, 이 패키지에는 지도 타일의 다운로드, 렌더링, 캐싱 등의 기능이 내장되어 있음
+
+*마커 : 지도 위에 위치를 나타내는 이미지
+-디폴트 마커는 표준 구글 지도의 공통적인 아이콘을 사용하지만 변경 가능함
+-마커는 마커 클래스로써 GoogleMap.addMarker(makerOptions)를 호출해서 지도에 추가할 수 있음
+-클릭 이벤트로 사용자와 상호작용을 할 수 있음
 */
 
 public class MainActivity extends AppCompatActivity  {
@@ -46,6 +56,15 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btn = (Button)findViewById(R.id.btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         tv = (TextView)findViewById(R.id.tv);
 
